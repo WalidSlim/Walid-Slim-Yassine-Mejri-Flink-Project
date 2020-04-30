@@ -91,13 +91,7 @@ object StreamingJob {
     values(3)=l(4).split(":")(1).replace(""""""","").replace("}","")
     return (values(0).toString(),key,values(2).toString().toInt,l(3).split(":")(1).replace(""""""",""),values(3).asInstanceOf[String])
   }
-/*  case class Click(timestamp: Int, Uid: String,  {
-    def fromString(str: String) {
-      val json = JSON.parseRaw(str)//.parse(str)
-      return Click(json.ge//.getInt("timestamp"), json.getString("uid")...)
-    }
-  }
-*/
+
  def main(args: Array[String]) {
 
     // set up the streaming execution environment
@@ -108,7 +102,7 @@ object StreamingJob {
 
     val clicks = env.addSource(new FlinkKafkaConsumer[String]("clicks", new SimpleStringSchema(), properties))
     val displays=env.addSource(new FlinkKafkaConsumer[String]("displays", new SimpleStringSchema(), properties))
-//{"eventType:"click", "uid":"9628b2d5-3c71-4346-a8f0-2029155c8d3c16", "timestamp":1585320018, "ip":"238.186.83.58", "impressionId": "ea61e36d-6ab1-473d-99a7-14b8de3958e0"}
+
 /** PATTERN 1 */
 
     /** calculating CTR of ips that clicked more than 10 times in 60 seconds*/
